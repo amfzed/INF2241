@@ -1,5 +1,5 @@
 String readString; 
-
+int words; 
 void setup() {
   // put your setup code here, to run once:
 Serial.begin(115200); 
@@ -20,12 +20,27 @@ void loop() {
         Serial.println(secondWord);
         Serial.println(thirdWord);
         if ((firstWord == "Matt") && (secondWord == "was") && (thirdWord =="here")) {
-          Serial.println("happy you were here, Matt!");  
+          Serial.println("happy you were here, Matt!");
+          words = 1;   
         }
       }else{
       if (isAscii(c)) readString += c; //makes the string readString
     }  
     }
+
+switch (words) {
+    case 0:    
+      //do nothing 
+      break;
+    case 1:    
+      Serial.println("responded");
+      words = 0; 
+      break;
+    case 2:    
+      Serial.println("maybe");
+      break;
+  }
+    
 }
 
 String getValue(String data, char separator, int index)
